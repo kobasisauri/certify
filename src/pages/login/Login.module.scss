@@ -1,0 +1,50 @@
+.containter {
+  display: flex;
+  justify-content: center;
+}
+.wrapper {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  color: #92278f;
+}
+
+.box {
+  margin-top: 3rem;
+  border-radius: 30px;
+  background-color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 100px 10px;
+}
+
+.button {
+  background: #92278fb2;
+  border-radius: 30px;
+  width: 400px;
+  height: 50px;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button:hover {
+  background: #92278f;
+  cursor: pointer;
+}
+.text {
+  padding: 10 20;
+  color: #fff;
+}
