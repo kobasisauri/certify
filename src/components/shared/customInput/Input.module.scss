@@ -1,0 +1,63 @@
+$padding-x: 0.75rem;
+$padding-y: 0.7rem;
+$disabled-color: #f8f8f8;
+
+.wrapper {
+  //   border: 1px solid gray;
+  border-radius: 30px;
+  height: 75px;
+  background-color: #fff;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+  svg {
+    color: red;
+  }
+
+  .prefix {
+    margin-left: $padding-x;
+  }
+
+  .suffix {
+    margin-right: $padding-x;
+  }
+
+  input {
+    padding: $padding-y $padding-x;
+    border-radius: 30px;
+    height: 100%;
+    width: 100%;
+    border: none;
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: #000;
+      opacity: 0.4;
+    }
+
+    &.disabled {
+      background-color: $disabled-color;
+      color: red;
+    }
+
+    &:focus {
+      outline-style: none;
+      box-shadow: none;
+      border-color: transparent;
+    }
+  }
+
+  &.warning {
+    border-color: purple;
+
+    svg {
+      color: purple;
+    }
+  }
+}
+
+.errorMSG {
+  margin-left: calc(#{$padding-x} + 2px);
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  color: purple;
+}
