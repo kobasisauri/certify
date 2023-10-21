@@ -7,7 +7,7 @@ const csrfToken = document
   .getAttribute("content");
 
 const axiosInstance = axios.create({
-  baseURL: "http://apicertify.com.ge/api/",
+  baseURL: "https://apicertify.com.ge/api/",
   headers: {
     "Content-Type": "application/json",
     "X-CSRF-TOKEN": csrfToken,
