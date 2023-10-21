@@ -73,6 +73,7 @@ const Login = () => {
               value={values.password}
               name="password"
               handleChange={handleChange}
+              type="password"
             />
             <div style={{ color: "#616161", textDecoration: "underline" }}>
               Forgot password?
@@ -141,6 +142,7 @@ const Login = () => {
                   password: e.target.value,
                 }))
               }
+              type="password"
             />
             <div style={{ color: "#616161", textDecoration: "underline" }}>
               Forgot password?

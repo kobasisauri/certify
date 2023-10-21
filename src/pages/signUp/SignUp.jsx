@@ -71,6 +71,7 @@ const SignUp = () => {
               value={values.password}
               name="password"
               handleChange={handleChange}
+              type="password"
             />
 
             <TextInput
@@ -78,6 +79,7 @@ const SignUp = () => {
               value={values.confirmPassword}
               name="confirmPassword"
               handleChange={handleChange}
+              type="password"
             />
 
             <div
@@ -126,6 +128,7 @@ const SignUp = () => {
                   password: e.target.value,
                 }))
               }
+              type="password"
             />
             <TextInput
               placeholder={"Confirm password"}
@@ -136,6 +139,7 @@ const SignUp = () => {
                   ConfirmPassword: e.target.value,
                 }))
               }
+              type="password"
             />
 
             <div
