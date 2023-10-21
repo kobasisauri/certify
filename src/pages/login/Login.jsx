@@ -152,7 +152,13 @@ const Login = () => {
               type="password"
               suffix="show password"
             />
-            <div style={{ color: "#616161", textDecoration: "underline" }}>
+            <div
+              style={{
+                color: "#616161",
+                textDecoration: "underline",
+                marginTop: "20px",
+              }}
+            >
               Forgot password?
             </div>
 
