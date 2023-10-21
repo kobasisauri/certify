@@ -1,0 +1,49 @@
+.header {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  padding: 22px 20px;
+
+  .icon {
+    display: flex;
+    align-items: center;
+
+    h3 {
+      color: #92278f;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    img {
+      width: 24px;
+    }
+  }
+
+  .navItems {
+    margin-left: 40px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    a {
+      text-decoration: none;
+      color: #3a3a3a;
+
+      &:hover {
+        color: #000;
+      }
+    }
+  }
+  .iconWrapper {
+    display: flex;
+    gap: 25px;
+
+    .profilePic {
+      cursor: pointer;
+      border-radius: 100%;
+      height: 42px;
+      width: 42px;
+      object-fit: cover;
+    }
+  }
+}

@@ -11,7 +11,7 @@ const initialValues = {
   companyName: null,
   email: null,
   password: null,
-  confirmPassword: null,
+  password_confirmation: null,
 };
 
 const SignUp = () => {
@@ -23,7 +23,7 @@ const SignUp = () => {
   const [privateAccData, setPrivateAccData] = useState({
     email: null,
     password: null,
-    ConfirmPassword: null,
+    password_confirmation: null,
   });
 
   const onSubmit = (values) => {
@@ -93,8 +93,8 @@ const SignUp = () => {
 
             <TextInput
               placeholder={"Confirm password"}
-              value={values.confirmPassword}
-              name="confirmPassword"
+              value={values.password_confirmation}
+              name="password_confirmation"
               handleChange={handleChange}
               type="password"
             />
@@ -149,11 +149,11 @@ const SignUp = () => {
             />
             <TextInput
               placeholder={"Confirm password"}
-              value={privateAccData.ConfirmPassword}
+              value={privateAccData.password_confirmation}
               handleChange={(e) =>
                 setPrivateAccData((state) => ({
                   ...state,
-                  ConfirmPassword: e.target.value,
+                  password_confirmation: e.target.value,
                 }))
               }
               type="password"

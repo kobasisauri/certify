@@ -14,6 +14,10 @@ const initialValues = {
   email: null,
   password: null,
 };
+// const validations = {
+//   email: Yup.string().required("შეიყვანეთ მეილი"),
+//   password: Yup.string().required("შეიყვანეთ პაროლი"),
+// };
 const Login = () => {
   const navigate = useNavigate();
 
@@ -28,24 +32,29 @@ const Login = () => {
 
   const onSubmit = (values) => {
     if (active === 1) {
-      authBuisinessAcc(values).then((res) => {
-        setUser(res?.user);
-        localStorage.setItem("token", res.access_token);
-        navigate("/home");
-      });
+      authBuisinessAcc(values)
+        .then((res) => {
+          setUser(res?.user);
+          localStorage.setItem("token", res.access_token);
+          navigate("/home");
+        })
+        .catch((err) => console.log(err));
     } else if (active === 2) {
-      authPrivateAcc(privateAccData).then((res) => {
-        setUser(res?.user);
-        localStorage.setItem("token", res.access_token);
-        navigate("/home");
-      });
+      authPrivateAcc(privateAccData)
+        .then((res) => {
+          setUser(res?.user);
+          localStorage.setItem("token", res.access_token);
+          navigate("/home");
+        })
+        .catch((err) => console.log(err));
     } else {
       console.log("pizdec");
     }
   };
   const {
     values,
-    // errors,
+    errors,
+    touched,
     handleChange,
     handleSubmit,
     // setFieldValue,
@@ -88,6 +97,8 @@ const Login = () => {
               value={values.email}
               name="email"
               handleChange={handleChange}
+              isInvalid={touched.email && errors.email}
+              errorMSG={errors.email}
             />
             <TextInput
               placeholder={"Password"}
@@ -96,6 +107,8 @@ const Login = () => {
               handleChange={handleChange}
               type="password"
               suffix="show password"
+              isInvalid={touched.password && errors.password}
+              errorMSG={errors.password}
             />
             <div
               style={{
@@ -191,7 +204,7 @@ const Login = () => {
                 alignItems: "center",
               }}
             >
-              <div className={styles["sign-in-button"]}>
+              <div className={styles["sign-in-button"]} onClick={handleSubmit}>
                 <p
                   style={{
                     color: "#FFF",
@@ -209,7 +222,6 @@ const Login = () => {
                   justifyContent: "center",
                   alignItems: "center",
                 }}
-                onClick={handleSubmit}
               >
                 <p style={{ color: "#A3A3A3", fontSize: "15px" }}>
                   New here?{" "}

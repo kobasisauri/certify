@@ -59,7 +59,7 @@ const TextInput = ({
           </div>
         )}
       </div>
-      {isInvalid && <div className={classes.errorMSG}>შეცდომა</div>}
+      {isInvalid && <div className={classes.errorMSG}>{errorMSG}</div>}
     </div>
   );
 };
