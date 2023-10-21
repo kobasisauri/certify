@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import classes from "./Input.module.scss";
 
 const TextInput = ({
@@ -18,10 +18,12 @@ const TextInput = ({
   suffix,
   autoComplete,
   readOnly,
+
   ...rest
 }) => {
   const inputEl = useRef();
   const onFocus = () => inputEl.current.focus();
+  const [show, setShow] = useState(false);
 
   return (
     <div className={`w-100 ${className ? className : ""}`} {...rest}>
@@ -36,7 +38,7 @@ const TextInput = ({
         <input
           ref={inputEl}
           className={`w-100 border-0 ${disabled ? classes.disabled : ""}`}
-          type={type || "text"}
+          type={show ? "text" : type}
           name={name}
           placeholder={placeholder}
           value={value ?? ""}
@@ -47,7 +49,16 @@ const TextInput = ({
           readOnly={readOnly}
           autoComplete={autoComplete || "off"}
         />
-        {suffix && <div className={classes.suffix}>{suffix}</div>}
+        {suffix && (
+          <div
+            className={classes.suffix}
+            onClick={() =>
+              suffix === "show password" && setShow((state) => !state)
+            }
+          >
+            {suffix}
+          </div>
+        )}
       </div>
       {isInvalid && <div className={classes.errorMSG}>შეცდომა</div>}
     </div>

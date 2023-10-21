@@ -74,8 +74,15 @@ const Login = () => {
               name="password"
               handleChange={handleChange}
               type="password"
+              suffix="show password"
             />
-            <div style={{ color: "#616161", textDecoration: "underline" }}>
+            <div
+              style={{
+                color: "#616161",
+                textDecoration: "underline",
+                marginTop: "20px",
+              }}
+            >
               Forgot password?
             </div>
 
@@ -107,7 +114,7 @@ const Login = () => {
                 }}
               >
                 <p style={{ color: "#A3A3A3", fontSize: "15px" }}>
-                  New here?
+                  New here?{" "}
                   <Link to="/sign-up" state={{ buissines: true }}>
                     Create an account
                   </Link>
@@ -143,6 +150,7 @@ const Login = () => {
                 }))
               }
               type="password"
+              suffix="show password"
             />
             <div style={{ color: "#616161", textDecoration: "underline" }}>
               Forgot password?
@@ -176,7 +184,7 @@ const Login = () => {
                 }}
               >
                 <p style={{ color: "#A3A3A3", fontSize: "15px" }}>
-                  New here?
+                  New here?{" "}
                   <Link to="/sign-up" state={{ buissines: false }}>
                     Create an account
                   </Link>
