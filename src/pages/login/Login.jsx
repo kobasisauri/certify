@@ -115,6 +115,7 @@ const Login = () => {
                 color: "#616161",
                 textDecoration: "underline",
                 marginTop: "20px",
+                marginLeft: "8px",
               }}
             >
               Forgot password?
@@ -145,6 +146,7 @@ const Login = () => {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
+                  marginTop: "12px",
                 }}
               >
                 <p style={{ color: "#A3A3A3", fontSize: "15px" }}>
@@ -221,6 +223,8 @@ const Login = () => {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
+                  marginTop: "12px",
+                  marginLeft: "8px",
                 }}
               >
                 <p style={{ color: "#A3A3A3", fontSize: "15px" }}>
