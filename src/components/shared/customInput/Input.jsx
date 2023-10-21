@@ -18,7 +18,6 @@ const TextInput = ({
   suffix,
   autoComplete,
   readOnly,
-
   ...rest
 }) => {
   const inputEl = useRef();

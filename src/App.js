@@ -10,11 +10,6 @@ function App() {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  // to do
-  // useEffect(() => {
-  //   setTheme(JSON.parse(localStorage.getItesm("theme")));
-  // }, [setTheme]);
-
   return (
     <div>
       <Routes>

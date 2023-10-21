@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Login.module.scss";
 import icon from "../../assets/images/icon.png";
 import Progressbar from "../../components/shared/loadingBar/LoadingBar";
@@ -7,11 +7,16 @@ import TextInput from "../../components/shared/customInput/Input";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
+import useStore from "../../store/useStore";
+import { authBuisinessAcc, authPrivateAcc } from "../../services/auth";
+
 const initialValues = {
   email: null,
   password: null,
 };
 const Login = () => {
+  const navigate = useNavigate();
+
   const [loading, setLoading] = useState(true);
   const [active, setActive] = useState(0);
   const [privateAccData, setPrivateAccData] = useState({
@@ -19,14 +24,30 @@ const Login = () => {
     password: null,
   });
 
+  const setUser = useStore((state) => state.setUser);
+
   const onSubmit = (values) => {
-    console.log(values);
+    if (active === 1) {
+      authBuisinessAcc(values).then((res) => {
+        setUser(res?.user);
+        localStorage.setItem("token", res.access_token);
+        navigate("/home");
+      });
+    } else if (active === 2) {
+      authPrivateAcc(privateAccData).then((res) => {
+        setUser(res?.user);
+        localStorage.setItem("token", res.access_token);
+        navigate("/home");
+      });
+    } else {
+      console.log("pizdec");
+    }
   };
   const {
     values,
     // errors,
     handleChange,
-    // handleSubmit,
+    handleSubmit,
     // setFieldValue,
     // setValues,
   } = useFormik({
@@ -94,7 +115,7 @@ const Login = () => {
                 alignItems: "center",
               }}
             >
-              <div className={styles["sign-in-button"]}>
+              <div className={styles["sign-in-button"]} onClick={handleSubmit}>
                 <p
                   style={{
                     color: "#FFF",
@@ -188,6 +209,7 @@ const Login = () => {
                   justifyContent: "center",
                   alignItems: "center",
                 }}
+                onClick={handleSubmit}
               >
                 <p style={{ color: "#A3A3A3", fontSize: "15px" }}>
                   New here?{" "}

@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import icon from "../../assets/images/icon.png";
 import TextInput from "../../components/shared/customInput/Input";
 import styles from "./SignUp.module.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { registerBuisinessAcc, registerprivateAcc } from "../../services/auth";
 
 const initialValues = {
   companyName: null,
@@ -14,6 +15,8 @@ const initialValues = {
 };
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
   const location = useLocation();
   const { buissines } = location.state;
 
@@ -24,14 +27,24 @@ const SignUp = () => {
   });
 
   const onSubmit = (values) => {
-    console.log(values);
+    if (buissines) {
+      registerBuisinessAcc(values).then((res) => {
+        navigate("/auth");
+        console.log(1);
+      });
+    } else {
+      registerprivateAcc(privateAccData).then((res) => {
+        navigate("/auth");
+        console.log(2);
+      });
+    }
   };
 
   const {
     values,
     // errors,
     handleChange,
-    // handleSubmit,
+    handleSubmit,
     // setFieldValue,
     // setValues,
   } = useFormik({
@@ -94,7 +107,7 @@ const SignUp = () => {
                 alignItems: "center",
               }}
             >
-              <div className={styles["sign-in-button"]}>
+              <div className={styles["sign-in-button"]} onClick={handleSubmit}>
                 <p
                   style={{
                     color: "#FFF",
@@ -154,7 +167,7 @@ const SignUp = () => {
                 alignItems: "center",
               }}
             >
-              <div className={styles["sign-in-button"]}>
+              <div className={styles["sign-in-button"]} onClick={handleSubmit}>
                 <p
                   style={{
                     color: "#FFF",
