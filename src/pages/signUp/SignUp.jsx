@@ -1,27 +1,32 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import styles from "./Login.module.scss";
+import { useLocation } from "react-router-dom";
 import icon from "../../assets/images/icon.png";
-import Progressbar from "../../components/shared/loadingBar/LoadingBar";
 import TextInput from "../../components/shared/customInput/Input";
+import styles from "./SignUp.module.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const initialValues = {
+  companyName: null,
   email: null,
   password: null,
+  confirmPassword: null,
 };
-const Login = () => {
-  const [loading, setLoading] = useState(true);
-  const [active, setActive] = useState(0);
+
+const SignUp = () => {
+  const location = useLocation();
+  const { buissines } = location.state;
+
   const [privateAccData, setPrivateAccData] = useState({
     email: null,
     password: null,
+    ConfirmPassword: null,
   });
 
   const onSubmit = (values) => {
     console.log(values);
   };
+
   const {
     values,
     // errors,
@@ -35,33 +40,26 @@ const Login = () => {
     onSubmit,
   });
 
-  return loading ? (
-    <Progressbar setLoading={setLoading} />
-  ) : (
+  return (
     <div className={styles.containter}>
       <div className={styles.wrapper}>
-        <div className={styles["logo-container"]} onClick={() => setActive(0)}>
+        <div className={styles["logo-container"]}>
           <h1 className={styles.header}>CERTIFY</h1>
           <img src={icon} alt="icon" width={50} height={50} />
         </div>
 
-        {active === 0 && (
-          <div className={styles.box}>
-            <div className={styles.button} onClick={() => setActive(1)}>
-              <p className={styles.text}>Buissines Account</p>
-            </div>
-            <p>or</p>
-            <div className={styles.button} onClick={() => setActive(2)}>
-              <p className={styles.text}>Private Account</p>
-            </div>
-          </div>
-        )}
-        {active === 1 && (
+        {buissines === true ? (
           <div className={styles.box2}>
             <div style={{ color: "#616161", fontWeight: 700 }}>
               CERTIFY WITH CERTIFY
             </div>
 
+            <TextInput
+              placeholder={"Company name"}
+              value={values.companyName}
+              name="companyName"
+              handleChange={handleChange}
+            />
             <TextInput
               placeholder={"Email"}
               value={values.email}
@@ -74,9 +72,13 @@ const Login = () => {
               name="password"
               handleChange={handleChange}
             />
-            <div style={{ color: "#616161", textDecoration: "underline" }}>
-              Forgot password?
-            </div>
+
+            <TextInput
+              placeholder={"Confirm password"}
+              value={values.confirmPassword}
+              name="confirmPassword"
+              handleChange={handleChange}
+            />
 
             <div
               style={{
@@ -94,29 +96,12 @@ const Login = () => {
                     fontWeight: "700",
                   }}
                 >
-                  Sign in
-                </p>
-              </div>
-
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <p style={{ color: "#A3A3A3", fontSize: "15px" }}>
-                  New here?
-                  <Link to="/sign-up" state={{ buissines: true }}>
-                    Create an account
-                  </Link>
+                  Sign Up
                 </p>
               </div>
             </div>
           </div>
-        )}
-
-        {active === 2 && (
+        ) : (
           <div className={styles.box2}>
             <div style={{ color: "#616161", fontWeight: 700 }}>
               CERTIFY WITH CERTIFY
@@ -142,9 +127,16 @@ const Login = () => {
                 }))
               }
             />
-            <div style={{ color: "#616161", textDecoration: "underline" }}>
-              Forgot password?
-            </div>
+            <TextInput
+              placeholder={"Confirm password"}
+              value={privateAccData.ConfirmPassword}
+              handleChange={(e) =>
+                setPrivateAccData((state) => ({
+                  ...state,
+                  ConfirmPassword: e.target.value,
+                }))
+              }
+            />
 
             <div
               style={{
@@ -162,22 +154,7 @@ const Login = () => {
                     fontWeight: "700",
                   }}
                 >
-                  Sign in
-                </p>
-              </div>
-
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <p style={{ color: "#A3A3A3", fontSize: "15px" }}>
-                  New here?
-                  <Link to="/sign-up" state={{ buissines: false }}>
-                    Create an account
-                  </Link>
+                  Sign Up
                 </p>
               </div>
             </div>
@@ -188,4 +165,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

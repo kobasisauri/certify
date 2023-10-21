@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Route, Navigate, Routes, useLocation } from "react-router-dom";
 
-import { Home, Error, Login } from "./pages";
+import { Home, Error, Login, SignUp } from "./pages";
 
 function App() {
   const { pathname } = useLocation();
@@ -20,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate replace="true" to="/auth" />} />
         <Route path="/auth" element={<Login />} />
+        <Route path="/sign-up" element={<SignUp />} />
         <Route path="/home" element={<Home />} />
         <Route path="/404" element={<Error />} />
         <Route path="/*" element={<Navigate replace to="/404" />} />
