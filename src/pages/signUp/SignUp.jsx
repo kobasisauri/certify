@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import icon from "../../assets/images/icon.png";
 import TextInput from "../../components/shared/customInput/Input";
 import styles from "./SignUp.module.scss";
@@ -43,10 +43,14 @@ const SignUp = () => {
   return (
     <div className={styles.containter}>
       <div className={styles.wrapper}>
-        <div className={styles["logo-container"]}>
+        <Link
+          to="/auth"
+          style={{ textDecoration: "none" }}
+          className={styles["logo-container"]}
+        >
           <h1 className={styles.header}>CERTIFY</h1>
           <img src={icon} alt="icon" width={50} height={50} />
-        </div>
+        </Link>
 
         {buissines === true ? (
           <div className={styles.box2}>
