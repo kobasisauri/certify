@@ -192,6 +192,7 @@ const Login = () => {
               style={{
                 color: "#616161",
                 textDecoration: "underline",
+                marginLeft: "8px",
                 marginTop: "20px",
               }}
             >
@@ -224,7 +225,6 @@ const Login = () => {
                   justifyContent: "center",
                   alignItems: "center",
                   marginTop: "12px",
-                  marginLeft: "8px",
                 }}
               >
                 <p style={{ color: "#A3A3A3", fontSize: "15px" }}>
