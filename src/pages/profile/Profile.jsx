@@ -10,7 +10,7 @@ const Profile = () => {
   };
   const onsubmit = () => {
     let formData = new FormData();
-    formData.append("pic1", file);
+    formData.append("profile_picture", file);
 
     // fetch("https://apicertify.com.ge/api/profile-picture/upload", {
     //   method: "POST",
