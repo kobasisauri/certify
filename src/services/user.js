@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const uploadPic = (data) => {
   const x = axios.create({
-    baseURL: "https://api-soft.dentalapp.ge/",
+    baseURL: "https://apicertify.com.ge/api",
     headers: {
       "Content-Type": "multipart/form-data",
     },
